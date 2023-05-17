@@ -1,0 +1,13 @@
+# Ignore node_modules directory
+node_modules/
+
+# Ignore log files
+*.log
+
+# Ignore environment-specific configuration files
+.env
+.env.local
+.env.*.local
+
+# js files to be ignored
+keys.js
