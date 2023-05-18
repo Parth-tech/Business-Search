@@ -1,10 +1,11 @@
 const express = require('express');
 const cors = require('cors');
-const axios = require('axios');
-const apikeys = require('./keys')
+// const axios = require('axios');
+// const apikeys = require('./keys');
 const autoDetectController = require('./controllers/autodetect');
 const geocodingController = require('./controllers/geocoding');
 const getBusinessesController = require('./controllers/findBusinesses');
+const getDetailedBusinessData = require('./controllers/getDetailedBizData');
 
 const app = express();
 
@@ -49,6 +50,19 @@ app.get('/findbiz', async (req, res) => {
     res.send(results);
 
     // res.send('Hello, World!');
+});
+
+app.get('/getbizdetails', async(req, res) => {
+    
+    const queryParams = req.query;
+    console.log('Request Received!');
+    console.log('Params:', req.query);
+    console.log('------------Params End-----------');
+
+    let businessDetails = await getDetailedBusinessData.getDetailedBusinessData(queryParams);
+    console.log('|||||||||||||\n', businessDetails);
+    res.send(businessDetails);
+
 });
 
 
