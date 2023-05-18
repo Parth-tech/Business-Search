@@ -3,7 +3,9 @@ const apikeys = require('../keys')
 
 const getLatLong = async (address) => {
     let correctedAddress = address.replace(/\s+/g, '+');
+    console.log('formatted address: ',correctedAddress);
     try {
+        console.log('making geocoding request');
         const response = await axios.get('https://maps.googleapis.com/maps/api/geocode/json?address='+correctedAddress+`&key=${apikeys.geocodingkey}`);
 
         console.log('Response Data: ', response.data);

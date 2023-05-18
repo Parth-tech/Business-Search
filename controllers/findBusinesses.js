@@ -8,6 +8,7 @@ const getBusinesses = async (queryparams, userLatLong) => {
     console.log('Trying to fetch businesses');
 
     let categoryValue;
+    let businessArray = []
 
     switch(queryparams.category){
         case "Arts & Entertainment": 
@@ -30,13 +31,14 @@ const getBusinesses = async (queryparams, userLatLong) => {
             break;
 
         default:
-            categoryValue = "";
+            categoryValue = "arts,health,hotelstravel,food,professional";
             break;
     }
 
     // let url = `https://api.yelp.com/v3/businesses/search?term=${queryparams.keyword}&latitude=${userLatLong.latitude}&longitude=${userLatLong.longitude}&categories=${categoryValue}&radius=${queryparams.distance}`
-    // console.log('Yelp Request at: ', url);
     try {
+        console.log('Yelp Request at: https://api.yelp.com/v3/businesses/search', '\n queryParams received for making request: ',queryparams, '\n userlocation received for request: ', userLatLong);
+        console.log('\ncategory Value: ', categoryValue);
         const response = await axios.get('https://api.yelp.com/v3/businesses/search', {
           headers: {
             Authorization: `Bearer ${apikeys.yelpkey}`,
@@ -46,10 +48,9 @@ const getBusinesses = async (queryparams, userLatLong) => {
             latitude: userLatLong.latitude,
             longitude: userLatLong.longitude,
             categories: categoryValue,
-            radius: queryparams.distance,
+            radius: Math.min(Math.floor(queryparams.distance * 1609.34), 40000),
           },
         });
-        let businessArray = []
         const businesses = response.data.businesses;
         await businesses.forEach(business => {
             const extractedBusinessObject = {
@@ -58,13 +59,13 @@ const getBusinesses = async (queryparams, userLatLong) => {
                 rating: business.rating,
                 review_count: business.review_count,
                 image_url: business.image_url,
-                distance: business.distance
+                distance: (business.distance*0.000621371).toFixed(1) 
             };
             businessArray.push(extractedBusinessObject);
             console.log('Printint biz names\n',business.name);
         });
         console.log('-------end of biz names-------');
-        return businesses[2];
+        return businessArray;
     } catch (error) {
     console.error(error);
     throw error; // rethrow the error to be caught by the calling code
