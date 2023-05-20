@@ -1,5 +1,6 @@
 const express = require('express');
 const cors = require('cors');
+const path = require('path');
 // const axios = require('axios');
 // const apikeys = require('./keys');
 const autoDetectController = require('./controllers/autodetect');
@@ -8,8 +9,10 @@ const getBusinessesController = require('./controllers/findBusinesses');
 const getDetailedBusinessData = require('./controllers/getDetailedBizData');
 
 const app = express();
+app.set('view engine', 'ejs');
 
 app.use(cors());
+app.use(express.static(path.join(__dirname, 'public')));
 const port = 3000;
 
 // Define routes

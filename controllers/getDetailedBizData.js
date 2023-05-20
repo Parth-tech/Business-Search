@@ -1,6 +1,10 @@
 const axios = require('axios');
 const apikeys = require('../keys');
 const getReviewsController = require('./getReviews')
+const fetchMapDataController = require('./fetchMapData');
+const ejs = require('ejs');
+const fs = require('fs');
+const path = require('path');
 
 
 const getDetailedBusinessData = async (queryparams) => {
@@ -54,10 +58,18 @@ const getDetailedBusinessData = async (queryparams) => {
             reviews = await getReviewsController.getLatestReviews(queryparams.id, detailedBusinessData.review_count);
         }
 
+        const mapData = await fetchMapDataController.fetchMapData(coordinates.latitude, coordinates.longitude);
+        // const mapTemplate = fs.readFileSync(path.join(__dirname, '../public/map.ejs'), 'utf8');
+        // const renderedMap = ejs.render(mapTemplate, { mapData });
+
+        const reviewsTemplate = fs.readFileSync(path.join(__dirname, '../public/review.ejs'), 'utf8');
+        const renderedReviews = ejs.render(reviewsTemplate, { reviews });
 
         return { 
             'detailedBusinessData': detailedBusinessData,
-            'businessReviews' : reviews
+            'businessReviews' : reviews,
+            'mapHTML': mapData,
+            'renderedReviews': renderedReviews
         };
     } catch (error) {
     if (error.response && error.response.data && error.response.data.error) {

@@ -1,0 +1,33 @@
+<!-- <html> -->
+
+
+<div id="mapContainer"></div>
+
+<script>
+  // Access the map data passed from the backend
+  var mapData = <%= JSON.stringify(mapData) %>
+
+  // Use the map data as needed
+  // console.log('Map Data:', mapData);
+
+  // Initialize and display the Google Map
+  function initMap() {
+    // Extract the latitude and longitude from the map data
+    var location = mapData.results[0].geometry.location;
+    console.log('Init Func for Map is called');
+    // Define the map options
+    var mapOptions = {
+      center: location,
+      zoom: 12,
+    };
+
+    // Create a new map instance
+    var map = new google.maps.Map(document.getElementById('mapContainer'), mapOptions);
+  }
+
+  // Call the initMap function when the page has finished loading
+  google.maps.event.addDomListener(window, 'load', initMap);
+  initMap();
+</script>
+
+<!-- </html> -->
