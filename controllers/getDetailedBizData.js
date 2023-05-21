@@ -62,14 +62,36 @@ const getDetailedBusinessData = async (queryparams) => {
         // const mapTemplate = fs.readFileSync(path.join(__dirname, '../public/map.ejs'), 'utf8');
         // const renderedMap = ejs.render(mapTemplate, { mapData });
 
+        let formattedDetailedBusinessData = {...detailedBusinessData};
+        formattedDetailedBusinessData.location = formattedDetailedBusinessData.location.join('\n');
+        
+        var titles = formattedDetailedBusinessData.categories.map(function(obj) {
+            return obj.title;
+        });
+          
+        var joinedTitles = titles.join(' | ');
+
+        formattedDetailedBusinessData.categories = joinedTitles;
+
+        let twitterURL = "Check " + formattedDetailedBusinessData.name +" on Ticketmaster.\n" +formattedDetailedBusinessData.url;
+        twitterURL = `https://twitter.com/intent/tweet?text=${encodeURIComponent(formattedDetailedBusinessData.url)}`;
+
+        formattedDetailedBusinessData = {...formattedDetailedBusinessData,
+            'twitterURL' : twitterURL
+        }
+
         const reviewsTemplate = fs.readFileSync(path.join(__dirname, '../public/review.ejs'), 'utf8');
         const renderedReviews = ejs.render(reviewsTemplate, { reviews });
+
+        const businessDetailsTemplate = fs.readFileSync(path.join(__dirname, '../public/businessDetails.ejs'), 'utf8');
+        const renderedBusinessDetailsTemplate = ejs.render(businessDetailsTemplate, { formattedDetailedBusinessData });
 
         return { 
             'detailedBusinessData': detailedBusinessData,
             'businessReviews' : reviews,
             'mapHTML': mapData,
-            'renderedReviews': renderedReviews
+            'renderedReviews': renderedReviews,
+            'renderedBusinessDetailsTemplate': renderedBusinessDetailsTemplate
         };
     } catch (error) {
     if (error.response && error.response.data && error.response.data.error) {
