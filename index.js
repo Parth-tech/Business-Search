@@ -7,6 +7,7 @@ const autoDetectController = require('./controllers/autodetect');
 const geocodingController = require('./controllers/geocoding');
 const getBusinessesController = require('./controllers/findBusinesses');
 const getDetailedBusinessData = require('./controllers/getDetailedBizData');
+const getAutoCompleteController = require('./controllers/autocomplete');
 
 const app = express();
 app.set('view engine', 'ejs');
@@ -65,6 +66,19 @@ app.get('/getbizdetails', async(req, res) => {
     let businessDetails = await getDetailedBusinessData.getDetailedBusinessData(queryParams);
     console.log('|||||||||||||\n', businessDetails);
     res.send(businessDetails);
+
+});
+
+app.get('/autocomplete', async(req, res) => {
+    
+    const queryParams = req.query;
+    console.log('AutoComplete Request Received!');
+    console.log('Params:', req.query);
+    console.log('------------Params End-----------');
+
+    let autocomplete = await getAutoCompleteController.getAutoComplete(queryParams);
+    console.log('+++++++++++\n', autocomplete);
+    res.send(autocomplete);
 
 });
 
