@@ -1,0 +1,236 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    /* background-image: url("./assets/bg2.png"); */
+    /* background: linear-gradient(to top, #691514, #9db6da); */
+    /* background-color: #0cbaba; */
+    /* background-image: linear-gradient(315deg, #0cbaba 0%, #380036 74%); */
+    background-color: #7f5a83;
+    background-image: linear-gradient(315deg, #7f5a83 0%, #0d324d 74%);
+
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.searchCard{
+    width: 60%;
+    background-color: #ffffff40 !important;
+    /* -webkit-backdrop-filter: blur(5px); */
+    backdrop-filter: blur(5px) !important;
+}
+
+input::placeholder {
+    /* font-style: italic; */
+    padding-left: 3px !important;
+}
+
+input{
+    padding: 5px 2px !important;
+    margin-bottom: 10px !important;
+}
+
+label{
+    padding: 0px !important;
+    margin: 0px !important;
+}
+
+.cursor-pointer{
+    cursor: pointer;
+}
+
+.custom-half-star{
+    /* --fa-primary-color: #f5e000 !important;
+    --fa-secondary-color: #999999 !important; */
+    background-image: linear-gradient(to right, #fff25d 50%, #999999 50%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.custom-empty-star{
+    color: #999999 !important;
+}
+
+.custom-filled-star{
+    color: #fff25d !important;
+}
+
+.custom-half-star-businessDetails{
+    background-image: linear-gradient(to right, #fff25d 50%, #606060 50%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.green-calendar-icon{
+    color: rgb(0, 143, 0);
+}
+
+tabs .nav-link.active {
+    color: #fff !important;
+    background-color: #520080 !important;
+    border-color: var(--bs-nav-tabs-link-active-border-color);
+    border-bottom: 7px solid white !important; 
+}
+
+.nav-tabs .nav-link {
+    margin-bottom: calc(-1 * var(--bs-nav-tabs-border-width));
+    border: 0px solid black;
+    /* border-top-left-radius: var(--bs-nav-tabs-border-radius); */
+    /* border-top-right-radius: var(--bs-nav-tabs-border-radius); */
+}
+
+.nav-tabs .nav-link:focus, .nav-tabs .nav-link:hover {
+    isolation: isolate;
+    background-color: #51008000;
+    border-color: 0px solid black;
+    /* background-color: #ffefff !important; */
+    /* border-radius: 8px; */
+}
+
+#businessDetailsDiv{
+    border-radius: 8px;
+    box-shadow: 1px 3px 4px 4px #00000038;
+    background-color: #ffffff40 !important;
+    /* -webkit-backdrop-filter: blur(5px); */
+    backdrop-filter: blur(5px) !important;
+}
+
+.nav-link:focus, .nav-link:hover {
+    color: white;
+}
+
+.nav-link {
+    color: #ffffffa3 !important;
+}
+
+.nav-tabs .nav-link:focus, .nav-tabs .nav-link:hover {
+    border: 0px solid rgba(255, 255, 255, 0) !important;
+}
+
+link:hover {
+    isolation: isolate;
+    border-color: rgba(255, 255, 255, 0) !important;
+}
+
+.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+    color: white !important;
+    background-color: rgba(255, 255, 255, 0) !important; 
+    border: 0px solid rgba(255, 255, 255, 0) !important;
+    border-bottom: 5px solid white !important;
+}
+
+/* .nav-tabs .nav-link:focus{
+    border: 0px solid rgba(255, 255, 255, 0) !important;
+} */
+
+.form-check-input:checked {
+    background-color: #76af56 !important;
+    border-color: #76af56 !important;
+}
+
+.form-check-input:focus {
+    border-color: rgba(29, 80, 0, 0) !important;
+    outline: 0 !important;
+    box-shadow: 0 0 0 0.25rem rgba(29,80,0,0) !important;
+}
+
+.form-check-input:hover {
+    border-color: rgb(187 202 178) !important;
+    outline: 0 !important;
+    box-shadow: 0 0 0 0.25rem rgba(165, 255, 113, 0.25) !important;
+}
+
+#noResultsDiv{
+    text-align: center !important;
+    width: 70% !important;
+    border: 1px solid #ffeaea !important;
+    border-radius: 8px !important;
+    --box-shadow-color: #b400004d !important;
+    box-shadow: 0px 0px 10px var(--box-shadow-color) !important;
+}
+
+#mapContainer{
+    height: 400px !important;
+}
+
+#businessDetailsDiv{
+    display: none !important;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+    color: grey !important;
+}
+
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+    color: black !important;
+}
+
+label{
+    color: #b2e8ff;
+    font-family: 'Urbanist', sans-serif;
+}
+
+.card-body > h2{
+    font-family: 'Playfair Display', serif !important;
+    color: #C4DFDF !important;
+}
+
+#submitBtn, #clearButton{
+    font-family: 'Playfair Display', serif !important;   
+}
+
+.businessDetailLabel{
+    color: #fed095 !important;
+    font-size: 22px !important;
+    font-family: 'Playfair Display', serif !important;
+}
+
+.businessDetailValue{
+    color: #e4ffff !important;
+}
+
+#businessName > h2{
+    color: #fed095;
+    font-family: 'Playfair Display', serif !important;
+}
+
+.shareOn{
+    font-family: 'Urbanist', sans-serif;
+    font-style: italic;
+    font-weight: 500;
+    color: #fed095 !important;
+}
+
+#mapHTML{
+    padding: 5px !important;
+}
+
+.username{
+    font-family: 'Playfair Display', serif !important;
+    color: #874f07 !important;
+}
+
+.semiBoldUrbanist{
+    font-family: 'Urbanist', sans-serif !important;
+    font-weight: 600 !important;
+}
+
+.fab{
+    line-height: 0.8 !important;
+}
+
+.links{
+    text-decoration: none !important;
+    color: rgba(255, 255, 255, 0) !important;
+}
+
+
+.form-control:disabled {
+    background-color: #999da0 !important;
+    opacity: 1 !important;
+    border: 1px solid #999da0 !important;
+}

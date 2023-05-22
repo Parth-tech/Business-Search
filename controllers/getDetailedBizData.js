@@ -80,11 +80,11 @@ const getDetailedBusinessData = async (queryparams) => {
             'twitterURL' : twitterURL
         }
 
-        const reviewsTemplate = fs.readFileSync(path.join(__dirname, '../public/review.ejs'), 'utf8');
-        const renderedReviews = ejs.render(reviewsTemplate, { reviews });
+        // const reviewsTemplate = fs.readFileSync(path.join(__dirname, '../public/review.ejs'), 'utf8');
+        const renderedReviews = ejs.render('review', { reviews });
 
-        const businessDetailsTemplate = fs.readFileSync(path.join(__dirname, '../public/businessDetails.ejs'), 'utf8');
-        const renderedBusinessDetailsTemplate = ejs.render(businessDetailsTemplate, { formattedDetailedBusinessData });
+        // const businessDetailsTemplate = fs.readFileSync(path.join(__dirname, '../public/businessDetails.ejs'), 'utf8');
+        const renderedBusinessDetailsTemplate = ejs.render('businessDetails', { formattedDetailedBusinessData });
 
         return { 
             'detailedBusinessData': detailedBusinessData,

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@1,500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@600&display=swap" rel="stylesheet">
+    <title><%= title%></title>
+</head>
+<body>
+    <!-- <ul class="nav justify-content-end nav-underline mx-3">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Search</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="favorites.html">Favorites</a>
+        </li>
+    </ul> -->
+
+
+    <!-- Search Form -->
+    <div class=" card-container d-flex align-items-center justify-content-center">
+        <div class="card col-11 col-sm-6 my-4 mx-1 searchCard">
+            <div class="card-body ">
+                <h2 class="card-title mb-3 text-center"><%= title %></h2>
+
+                <form id="searchForm">
+
+                    <!-- Keyword Row -->
+                    <div class=" row mx-1">
+                        <div class="col-12">
+                            <!-- Keyword Field -->
+                            <label for="keywordTextField" class="form-label">Keyword<sup class="text-danger">*</sup></label>
+                            <input type="text" class="form-control" list="datalistOptions" id="keywordTextField" placeholder="" required autocomplete="off">
+                            <datalist id="datalistOptions">
+                                <!-- <option value="San Francisco"> -->
+                            </datalist>
+                        </div>
+                    </div> 
+    
+                    <!-- Distance & Category Row -->
+                    <div class="m-1 row justify-content-between">
+                        <div class="col-12 col-md-5">
+                            <!-- Distance Field -->
+                            <label for="distanceTextField" class="form-label">Distance <i>&#40;miles&#41;</i> </label>
+                            <input type="number" max="24" class="form-control" id="distanceTextField" autocomplete="off" placeholder="10">
+                        </div>
+                        <div class="col-12 col-md-5">
+                            <!-- Category Field -->
+                            <label for="categorySelectField" class="form-label">Category<sup class="text-danger">*</sup></label>
+                            <select class="form-select" id="categorySelectField" aria-label="category">
+                                <option value="Default" selected>Default</option>
+                                <option value="Arts & Entertainment">Arts & Entertainment</option>
+                                <option value="Health & Medical">Health & Medical</option>
+                                <option value="Hotels & Travel">Hotels & Travel</option>
+                                <option value="Food">Food</option>
+                                <option value="Professional Services">Professional Services</option>
+                            </select>
+                        </div>
+    
+                    </div>
+    
+                    <!-- Location Row -->
+                    <div class=" row mx-1">
+                        <div class="col-12">
+                            <!-- <div class="row" id="locationFieldRow">
+                                <div class="col-12"> -->
+                                    <!-- Location Field -->
+                                    <label for="locationTextField" class="form-label">Location<sup class="text-danger">*</sup></label>
+                                    <input type="text" class="form-control" autocomplete="off" id="locationTextField" placeholder="" required>
+                                <!-- </div>
+                            </div> -->
+    
+                            <!-- <div class="row">
+                                <div class="col-12"> -->
+                                    <input class="form-check-input cursor-pointer" type="checkbox" value="" id="autoDetectCheckBox">
+                                    <label class="form-check-label cursor-pointer" for="autoDetectCheckBox" >
+                                        <small>Auto-detect my location</small> 
+                                    </label>
+                                <!-- </div>
+                            </div> -->
+                        </div>
+                    </div> 
+    
+    
+                    <div class="row my-2">
+                        <div class="col-12 d-flex justify-content-center">
+                            <button id="submitBtn" type="submit" class="btn btn-success mx-2">Submit</button>
+                            <button type="button" id="clearButton" class="btn btn-danger">Clear</button>
+                        </div>
+                    </div>
+                </form>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="container table-responsive align-items-center justify-content-center" id="tableDiv">
+
+    </div>
+
+    <div class="col-12 d-flex justify-content-center mb-3">
+        <div class="col-12 col-sm-10 mb-5 m-0 m-sm-1 align-items-center justify-content-center" style="display: block;padding: 0px;" id="businessDetailsDiv" >
+
+            <div class="row col-12 m-0" id="businessName">
+
+            </div>
+
+            <div>
+                <ul class="nav nav-tabs d-flex justify-content-evenly" style="background-color: #0d324d; border-radius: 0px; border: 0px solid black; font-family: 'Urbanist', sans-serif; " id="myTabs" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" id="tab1" data-toggle="tab" href="#businessDetailsCard" role="tab" aria-controls="businessDetailsCard" aria-selected="true">Business Details</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="tab2" data-toggle="tab" href="#mapHTML" role="tab" aria-controls="mapHTML" aria-selected="false">Location</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="tab3" data-toggle="tab" href="#reviewsTab" role="tab" aria-controls="reviewsTab" aria-selected="false">Top Reviews</a>
+                </li>
+                </ul>
+            </div>
+            
+            <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active" id="businessDetailsCard" role="tabpanel" aria-labelledby="tab1">
+                    <!-- Content for Tab 1 -->
+                </div>
+
+                <div class="tab-pane fade" id="mapHTML" role="tabpanel" aria-labelledby="tab2">
+                    <!-- Content for Tab 2 -->
+                    <div id="mapContainer">
+
+                    </div>
+                </div>
+
+                <div class="tab-pane fade" id="reviewsTab" role="tabpanel" aria-labelledby="tab3">
+                    <!-- Content for Tab 3 -->
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDPw5XP8NuTQcrFfzlYT0QmQ2Df0uLpgZY"></script>
+    <script src="/scripts/interactive.js"> </script>
+</body>
+</html>

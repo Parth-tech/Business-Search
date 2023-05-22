@@ -11,6 +11,7 @@ const getAutoCompleteController = require('./controllers/autocomplete');
 
 const app = express();
 app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
 
 app.use(cors());
 app.use(express.static(path.join(__dirname, 'public')));
@@ -80,6 +81,14 @@ app.get('/autocomplete', async(req, res) => {
     console.log('+++++++++++\n', autocomplete);
     res.send(autocomplete);
 
+});
+
+app.get('/', (req, res) => {
+    const data = {
+      title: 'Service Finder',
+      // Other data you want to pass to the template
+    };
+    res.render('homepage', data);
 });
 
 
