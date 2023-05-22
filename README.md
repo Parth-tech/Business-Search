@@ -14,7 +14,7 @@ This application help users find businesses in their vicinity
 ## Usage:
 1. Clone & install the required dependencies
 2. Set up keys.js with Yelp API key, IPinfo API key & Google API key (with Google Maps JavaScript API & Geocoding API enabled)
-3. Inside ***autodetect.js*** set [ip=Your_IP_Address] as request's to locally hosted server have IP=[::1]
+3. Inside ***autodetect.js*** set *[ip=Your_IP_Address]* as request's to locally hosted server have *IP=[::1]*
 
 ## Testing: 
 Run `npx jest getAutoComplete.test.js` to run the Jest test case on getAutoComplete.js
