@@ -1,26 +1,26 @@
 <div class="container p-3">
     <% reviews.forEach(function(review) { %>
-        <div class="row d-flex justify-content-center m-0 my-1 mb-3 p-1 pt-2" style="border: 1px solid #8080804f; border-radius: 10px; background-color: #ffefff;">
+        <div class="row d-flex justify-content-center m-0 my-1 mb-3 p-1 pt-2" style="border: 1px solid #8080804f; border-radius: 10px; background-color: #caf3ffc2;">
             <div class="row mb-3 pt-3">
                 <div class="col-auto">
                     <div class="circle-image" style="width: 50px; height: 50px;">
-                        <img src="<%= review.user.image_url %>" alt="User Image" style="width: 50px; height: 50px; object-fit: contain; border: 1px solid #9058b9; box-shadow: 0px 0px 5px 5px #9058b9b3;" class="img-fluid rounded-circle">
+                        <img src="<%= review.user.image_url %>" alt="User Image" style="width: 50px;height: 50px;object-fit: contain;border: 1px solid #00146c;box-shadow: 0px 0px 5px 5px #ffffffb3;" class="img-fluid rounded-circle">
                     </div>
                 </div>
                 <div class="col d-flex align-items-center">
-                    <h5><%= review.user.name %></h5>
+                    <h5 class="username"><%= review.user.name %></h5>
                 </div>
             </div>
             <div class="row">
                 <div class="col">
                     <i class="fas fa-calendar-alt green-calendar-icon"></i>
                     <% const reviewDate = new Date(review.time_created); %>
-                    <span class="review-date">
+                    <span class="review-date semiBoldUrbanist">
                         <%= reviewDate.toLocaleString('en-US', { month: 'long' }) %> <%= reviewDate.getDate() %>, <%= reviewDate.getFullYear() %>
                     </span>
                 </div>
                 <div class="col text-end">
-                    <span class="text-muted">Rating: </span>
+                    <span class="text-muted semiBoldUrbanist">Rating: </span>
                     <% for (let i = 0; i < 5; i++) { %>
                         <% if (i < Math.floor(review.rating)) { %>
                           <i class="fas fa-star custom-filled-star"></i>
@@ -34,7 +34,7 @@
             </div>
             <div class="row">
                 <div class="col">
-                    <p class="mt-3"><%= review.text %></p>
+                    <p class="mt-3 semiBoldUrbanist"><%= review.text %></p>
                 </div>
             </div>
         </div>
